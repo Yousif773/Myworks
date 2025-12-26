@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمال CNC | إبداع الحفر والنجارة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --accent-gold: #d4af37;
+            --bg-dark: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* أزرار الفلترة الاحترافية */
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 140px 0 50px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            background: var(--glass);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            font-size: 0.95rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            font-weight: bold;
+            border-color: var(--accent-gold);
+        }
+
+        /* شبكة المشاريع الكبيرة */
+        .projects-grid {
+            padding: 0 6%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); /* تكبير الحجم الأدنى للكرت */
+            gap: 35px;
+            padding-bottom: 120px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: 0.5s;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            height: 480px; /* تكبير ارتفاع الكرت */
+        }
+
+        .card-img {
+            width: 100%;
+            height: 75%; /* زيادة مساحة الصورة داخل الكرت */
+            object-fit: cover;
+            transition: 0.8s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .project-card:hover .card-img {
+            transform: scale(1.08);
+        }
+
+        .card-info {
+            padding: 25px;
+            background: linear-gradient(to top, #000 0%, transparent 100%);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-info h3 {
+            margin: 0 0 8px 0;
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+        }
+
+        .card-info p {
+            color: #ccc;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-top: 50px;
+            background: linear-gradient(45deg, #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .project-card { height: 400px; }
+            .section-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">PRO DESIGNER</div>
+
+<ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="cnc-work.html" class="active">أعمال CNC وغرف النوم</a></li>
+            <li><a href="graphic-work.html">الجرافيك ديزاين</a></li>
+            <li><a href="contact.html">تواصل معي</a></li>
+        </ul>
+    </nav>
+
+    <h1 class="section-title">إبداع الحفر والنجارة</h1>
+
+    <div class="filter-section">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="bedroom">غرف نوم</button>
+        <button class="filter-btn" data-filter="bed">أسرة</button>
+        <button class="filter-btn" data-filter="dolab">دواليب</button>
+        <button class="filter-btn" data-filter="decor">ديكورات واستيل</button>
+    </div>
+
+    <div class="projects-grid" id="cncGrid">
+        
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom1.png" class="card-img"><div class="card-info"><h3>غرفة نوم ملكية (Classic)</h3><p>تصميم اليستريتور وارت كام معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom2.png" class="card-img"><div class="card-info"><h3>غرفة نوم ملكية (Classic)</h3><p>تصميم اليستريتور وارت كام معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom3.png" class="card-img"><div class="card-info"><h3>غرفة نوم ملكية (Classic)</h3><p>تصميم اليستريتور وارت كام معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom4.png" class="card-img"><div class="card-info"><h3>غرفة نوم ملكية (Classic)</h3><p>تصميم اليستريتور وارت كام معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom5.png" class="card-img"><div class="card-info"><h3>غرفة نوم ملكية (Classic)</h3><p>تصميم اليستريتور وارت كام معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom6.png" class="card-img"><div class="card-info"><h3>غرفة نوم ملكية (Classic)</h3><p>تصميم اليستريتور وارت كام معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom7.png" class="card-img"><div class="card-info"><h3>غرفة نوم ملكية (Classic)</h3><p>تصميم اليستريتور وارت كام معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom8.png" class="card-img"><div class="card-info"><h3>غرفة نوم ملكية (Classic)</h3><p>تصميم اليستريتور وارت كام معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom9.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom10.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom11.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom12.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom13.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom14.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+
+<div class="project-card bedroom" data-tilt><img src="assets/images/bedroom15.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom16.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom17.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom18.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom19.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom20.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom21.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom22.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom23.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom24.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom25.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom26.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom27.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom28.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom29.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom30.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom31.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom32.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+        <div class="project-card bedroom" data-tilt><img src="assets/images/bedroom33.png" class="card-img"><div class="card-info"><h3>غرفة نوم(Classic)</h3><p>تصميم معقد مع تنفيذ خشب على cnc.</p></div></div>
+
+<div class="project-card bed" data-tilt><img src="assets/images/bed1.png" class="card-img"><div class="card-info"><h3>سرير مودرن سويدي</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card bed" data-tilt><img src="assets/images/bed2.png" class="card-img"><div class="card-info"><h3>سرير مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card bed" data-tilt><img src="assets/images/bed3.jpg" class="card-img"><div class="card-info"><h3>سرير مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card bed" data-tilt><img src="assets/images/bed4.jpg" class="card-img"><div class="card-info"><h3>سرير مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card bed" data-tilt><img src="assets/images/bed5.png" class="card-img"><div class="card-info"><h3>سرير مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab1.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab2.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab3.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab4.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab5.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab6.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab7.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab8.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab9.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab10.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab11.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab12.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab13.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab14.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+        <div class="project-card dolab" data-tilt><img src="assets/images/dolab15.png" class="card-img"><div class="card-info"><h3>دولاب مودرن</h3><p>تداخلات هندسية حديثة باستخدام CNC.</p></div></div>
+
+<div class="project-card decor" data-tilt><img src="assets/images/decor2.png" class="card-img"><div class="card-info"><h3>ديكور غرف (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor3.jpg" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor4.jpg" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor5.jpg" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor7.jpg" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor1.jpg" class="card-img"><div class="card-info"><h3>ديكور حائطي (Cladding)</h3><p>تنفيذ شعار على روتر cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/galb1.jpg" class="card-img"><div class="card-info"><h3>قوالب شهائد</h3><p>قالب شهائد تفوق بتصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor8.png" class="card-img"><div class="card-info"><h3>ديكور حائطي (Cladding)</h3><p>تنفيذ وتصميم مرايا حائط نحت cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor6.png" class="card-img"><div class="card-info"><h3>ديكور حائطي (Cladding)</h3><p>تنفيذ وتصميم مرايا حائط نحت cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor9.png" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor10.png" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor11.png" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor12.png" class="card-img"><div class="card-info"><h3>ديكور حائطي (Cladding)</h3><p>تنفيذ شعار على روتر cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor13.jpg" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor14.png" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor15.png" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor16.png" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor17.png" class="card-img"><div class="card-info"><h3>ديكور غرف نوم (Cladding)</h3><p>نقشات اسلاميه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor18.png" class="card-img"><div class="card-info"><h3>ديكور ستاير(Cladding)</h3><p>نقشات ونحت موديلات حديثه تصميم وتنفيذ cnc</p></div></div>
+
+<div class="project-card decor" data-tilt><img src="assets/images/decor19.png" class="card-img"><div class="card-info"><h3>ديكور ستاير(Cladding)</h3><p>نقشات ونحت موديلات حديثه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor20.png" class="card-img"><div class="card-info"><h3>ديكور ستاير(Cladding)</h3><p>نقشات ونحت موديلات حديثه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor21.png" class="card-img"><div class="card-info"><h3>ديكور ستاير(Cladding)</h3><p>نقشات ونحت موديلات حديثه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor22.png" class="card-img"><div class="card-info"><h3>ديكور ستاير(Cladding)</h3><p>نقشات ونحت موديلات حديثه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor23.png" class="card-img"><div class="card-info"><h3>ديكور ستاير(Cladding)</h3><p>نقشات ونحت موديلات حديثه تصميم وتنفيذ cnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor24.png" class="card-img"><div class="card-info"><h3>ديكور هدايا(Cladding)</h3><p>نحت وتنفيذ اشكال قوالب الهدايا بجميع انواعهاcnc</p></div></div>
+        <div class="project-card decor" data-tilt><img src="assets/images/decor.png" class="card-img"><div class="card-info"><h3>قص استيل</h3><p>الطير الجمهوري ليزر</p></div></div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        // تفعيل الـ Tilt (3D Effect)
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 10, speed: 400, glare: true, "max-glare": 0.1
+        });
+
+        // أنيميشن الظهور
+        window.onload = () => {
+            gsap.to(".project-card", {
+                opacity: 1, y: 0, duration: 1, stagger: 0.05, ease: "power2.out"
+            });
+        };
+
+        // نظام الفلترة
+        const buttons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.project-card');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+
+                gsap.to(items, {
+                    scale: 0.8, opacity: 0, duration: 0.3, onComplete: () => {
+                        items.forEach(item => {
+                            item.style.display = (filter === 'all' || item.classList.contains(filter)) ? 'block' : 'none';
+                        });
+                        gsap.to(".project-card[style*='display: block']", {
+                            scale: 1, opacity: 1, duration: 0.5, stagger: 0.05
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

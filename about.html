@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>من أنا | خبرة وإبداع</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-section {
+            padding: 150px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            min-height: 100vh;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        .about-image img {
+            width: 80%;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+            border: 2px solid var(--accent-gold);
+        }
+        .skills-bar {
+            margin-top: 30px;
+        }
+        .skill {
+            margin-bottom: 20px;
+        }
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .bar-bg {
+            width: 100%;
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-blue));
+            width: 0; /* ستبدأ من 0 وتتحرك بالجافا سكريبت */
+            transition: 1.5s ease-out;
+        }
+        @media (max-width: 768px) {
+            .about-section { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">PRO DESIGNER</div>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="cnc-work.html">أعمال CNC</a></li>
+            <li><a href="graphic-work.html">الجرافيك</a></li>
+            <li><a href="about.html" class="active">من أنا</a></li>
+            <li><a href="contact.html">تواصل معي</a></li>
+        </ul>
+    </nav>
+
+    <div class="about-section">
+        <div class="about-image">
+            <img src="assets/images/me.webp" alt="صورتي الشخصية">
+        </div>
+        <div class="about-text">
+            <h1 style="color: var(--accent-gold); margin-bottom: 20px;">قصتي مع التصميم</h1>
+            <p style="line-height: 1.8; color: #ddd;">
+            أنا مصمم جرافيك ومبدع رقمي شغوف، أؤمن أن التصميم ليس مجرد شكل جميل، بل هو لغة بصرية تحكي قصة علامتك التجارية وتصنع لها مكاناً في الذاكرة.
+                <br><br>
+بخبرة تقنية وفنية واسعة، أدمج بين عالم الفن الرقمي في بناء الهويات البصرية وتصاميم السوشيال ميديا، وبين الدقة الواقعية في تنفيذ أعمال الـ CNC. هدفي دائماً هو تحويل الأفكار المجردة إلى واقع ملموس يترك أثراً لا يُنسى، منطلقاً من الخيال لأرسم لعملائي مستقبلاً بصرياً فريداً يجمع بين رقي الفن المعاصر وأعلى معايير الاحترافية.            </p>
+
+            <div class="skills-bar">
+                <div class="skill">
+                    <div class="skill-name"><span>ArtCAM & CNC</span> <span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name"><span>Adobe Photoshop</span> <span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name"><span>Illustrator</span> <span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%"></div></div>
+                </div>
+                 <div class="skill">
+                    <div class="skill-name"><span>Microsoft Office</span> <span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%"></div></div>
+                </div>
+                 <div class="skill">
+                    <div class="skill-name"><span>Web development</span> <span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%"></div>
+                </div></div>
+                 <div class="skill">
+                    <div class="skill-name"><span>Software development</span> <span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%"></div></div>
+                </div>               
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
