@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المصمم المحترف | CNC & Graphic</title>
+    
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+
+   
 </head>
 <body>
 
@@ -15,11 +19,10 @@
         <div class="logo">PRO DESIGNER</div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">الرئيسية</a></li>
-            <li><a href="cnc-work.html">أعمال CNC وغرف النوم</a></li>
+            <li><a href="cnc-work.html">أعمال CNC</a></li>
             <li><a href="graphic-work.html">الجرافيك ديزاين</a></li>
             <li><a href="about.html">من انا</a></li>
             <li><a href="contact.html">تواصل معي</a></li>
-           
         </ul>
     </nav>
 
@@ -27,7 +30,7 @@
         <div class="hero-content">
             <h1 class="animate-text">إبداع بلا حدود <br> <span>بين الخشب والبيكسل</span></h1>
             <p class="animate-text">
-                أنا مصمم جرافيك ومحترف ArtCAM. أحول الأفكار إلى تصاميم بصرية مذهلة، وأحول الخشب إلى غرف نوم فاخرة.
+                أنا مصمم جرافيك ومحترف ArtCAM. أحول الأفكار إلى تصاميم بصرية مذهلة، وأحول الخشب إلى غرف نوم فاخرة بأحدث تقنيات الـ CNC.
             </p>
             <div class="btn-group animate-text">
                 <a href="cnc-work.html" class="btn primary-btn">شاهد غرف النوم (CNC)</a>
@@ -35,12 +38,30 @@
             </div>
         </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <script src="js/main.js"></script>
+
+    <script>
+        // دالة الظهور الانسيابي
+        window.addEventListener("load", function() {
+            const elements = document.querySelectorAll('.animate-text');
+            
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('reveal');
+                }, 300 * index); // ظهور متتابع (Stagger) بفارق زمني بسيط
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
+    
     <script src="js/main.js"></script>
+</body>
 </body>
 </html>

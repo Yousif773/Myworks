@@ -6,50 +6,10 @@
     <title>معرض الجرافيك | PRO DESIGNER</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #00d2ff;
-            --bg-dark: #020202;
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        body { background-color: var(--bg-dark); color: #fff; margin: 0; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
-
-        .filter-buttons { display: flex; justify-content: center; gap: 12px; margin: 140px 0 60px; flex-wrap: wrap; }
-
-        .filter-btn {
-            padding: 12px 35px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
-            color: #fff; border-radius: 15px; cursor: pointer; transition: 0.5s ease; backdrop-filter: blur(15px);
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary); color: #000; box-shadow: 0 0 30px rgba(0, 210, 255, 0.4); transform: translateY(-5px);
-        }
-
-        .graphic-grid { padding: 0 5%; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; padding-bottom: 100px; }
-
-        .graphic-item {
-            position: relative; height: 350px; border-radius: 20px; background: #111; border: 1px solid var(--glass-border);
-            overflow: hidden; opacity: 0; transform: translateY(40px); cursor: pointer;
-        }
-
-        .graphic-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
-
-        .graphic-overlay {
-            position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 70%);
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transition: 0.5s;
-        }
-
-        .graphic-item:hover .graphic-overlay { opacity: 1; }
-        .graphic-item:hover img { transform: scale(1.1); }
-
-        .wide { grid-column: span 2; }
-        .tall { grid-row: span 2; height: 100% !important; }
-
-        @media (max-width: 768px) { .wide, .tall { grid-column: span 1; grid-row: span 1; height: 320px !important; } }
-    </style>
 </head>
 <body>
+
+    <canvas id="webgl-canvas"></canvas>
 
     <nav class="navbar">
         <div class="logo">PRO DESIGNER</div>
@@ -71,452 +31,129 @@
 
     <div class="graphic-grid" id="mainGrid">
         
-        <div class="graphic-item logo" data-tilt><img src="assets/images/logo1.jpg" alt=""><div class="graphic-overlay"><h3>تصميم شعار</h3><p>تصميم اليستريتور</p></div></div>
-        <div class="graphic-item logo" data-tilt><img src="assets/images/logo2.jpg" alt=""><div class="graphic-overlay"><h3>تصميم شعار</h3><p>تصميم اليستريتور</p></div></div>
-        <div class="graphic-item logo" data-tilt><img src="assets/images/logo3.jpg" alt=""><div class="graphic-overlay"><h3>تصميم شعار</h3><p>تصميم اليستريتور</p></div></div>
-        <div class="graphic-item logo" data-tilt><img src="assets/images/logo4.png" alt=""><div class="graphic-overlay"><h3>تصميم شعار</h3><p>تصميم اليستريتور</p></div></div>
-        <div class="graphic-item logo" data-tilt><img src="assets/images/logo6.jpg" alt=""><div class="graphic-overlay"><h3>تصميم شعار</h3><p>تصميم اليستريتور</p></div></div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo5.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo7.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo8.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo9.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo10.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo11.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo12.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo13.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo14.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo15.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo16.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo17.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo18.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo19.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo20.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo21.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo22.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-        <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo23.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-         <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo24.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
-         <div class="graphic-item logo" data-tilt>
-            <img src="assets/images/logo25.png" alt="">
-            <div class="graphic-overlay">
-            <h3>تصميم شعار</h3>
-            <p>تصميم اليستريتور</p>
-            </div>
-        </div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo1.jpg" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo2.jpg" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo3.jpg" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo4.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo6.jpg" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo5.jpg" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo7.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo8.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo9.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo10.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo11.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo12.jpg" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo13.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo14.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo15.jpg" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo16.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo17.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo18.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo19.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo20.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo21.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo22.jpg" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo23.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo24.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
+        <div class="graphic-item logo" data-tilt><img src="assets/images/logo25.png" loading="lazy"><div class="graphic-overlay"><h3>تصميم شعار</h3><p>اليستريتور</p></div></div>
 
+        <div class="graphic-item social" data-tilt><img src="assets/images/post1.png" loading="lazy"><div class="graphic-overlay"><h3>إعلان مسابقة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post2.png" loading="lazy"><div class="graphic-overlay"><h3>إعلان مسابقة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post3.jpg" loading="lazy"><div class="graphic-overlay"><h3>إعلان تخفيضات</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post4.png" loading="lazy"><div class="graphic-overlay"><h3>إعلان تخفيضات</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post5.png" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post17.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post18.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post19.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post20.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post21.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post22.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post23.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post24.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post25.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post26.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post27.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post28.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post29.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post30.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post31.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post32.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post33.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post34.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post35.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post36.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post37.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post38.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post39.jpg" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/post40.png" loading="lazy"><div class="graphic-overlay"><h3>سوشيال ميديا</h3><p>فوتوشوب</p></div></div>
 
-        <div class="graphic-item social" data-tilt><img src="assets/images/post1.png" alt=""><div class="graphic-overlay"><h3>تصميم اعلان مسابقة</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/post2.png" alt=""><div class="graphic-overlay"><h3>تصميم اعلان مسابقة</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/post3.jpg" alt=""><div class="graphic-overlay"><h3>تصميم اعلان تخفيضات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/post4.png" alt=""><div class="graphic-overlay"><h3>تصميم اعلان تخفيضات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post5.png" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-         <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post17.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post18.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post19.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post20.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post21.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post22.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post23.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
+        <div class="graphic-item gralb tall" data-tilt><img src="assets/images/post6.png" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb tall" data-tilt><img src="assets/images/post11.png" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb tall" data-tilt><img src="assets/images/post12.png" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb" data-tilt><img src="assets/images/post9.png" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb" data-tilt><img src="assets/images/post8.jpg" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb" data-tilt><img src="assets/images/post10.png" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb" data-tilt><img src="assets/images/post13.jpg" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb" data-tilt><img src="assets/images/post14.jpg" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb" data-tilt><img src="assets/images/post15.jpg" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item gralb" data-tilt><img src="assets/images/post16.jpg" loading="lazy"><div class="graphic-overlay"><h3>قالب إعلاني</h3><p>فوتوشوب</p></div></div>
 
-        
-        <div class="graphic-item gralb tall" data-tilt><img src="assets/images/post6.png" alt=""><div class="graphic-overlay"><h3>تصميم قالب اعلاني للصور والفيديوهات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item gralb tall" data-tilt><img src="assets/images/post11.png" alt=""><div class="graphic-overlay"><h3>تصميم قالب اعلاني للصور والفيديوهات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-    <div class="graphic-item gralb tall" data-tilt>
-        <img src="assets/images/post12.png" alt="">
-        <div class="graphic-overlay">
-        <h3>تصميم قالب اعلاني للصور والفيديوهات</h3>
-        <p>تلاعب بالصور - فوتوشوب</p>
-        </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post24.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post25.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post26.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post27.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post28.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post29.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post30.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post31.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post32.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post33.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post34.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post35.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand1.jpg" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية كاملة</h3><p>أظرف، كروت</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand2.jpg" loading="lazy"><div class="graphic-overlay"><h3>لوحة تجارية</h3><p>هوية بصرية</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand3.jpg" loading="lazy"><div class="graphic-overlay"><h3>لوحة تجارية</h3><p>هوية بصرية</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand2.png" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>أظرف، كروت</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand3.png" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>أظرف، كروت،لوحات</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand4.jpg" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>أظرف، كروت، ختم</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand5.jpg" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>أظرف، كروت</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand6.jpg" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>لوحات وأوراق</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand7.jpg" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>لوحات وأوراق</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand8.jpg" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>لوحات وأوراق</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand9.png" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>لوحات وأوراق</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand10.png" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>لوحات وأوراق</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand12.png" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>لوحات وأوراق</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand13.png" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>لوحات وأوراق</p></div></div>
+        <div class="graphic-item branding" data-tilt><img src="assets/images/brand4.png" loading="lazy"><div class="graphic-overlay"><h3>هوية بصرية</h3><p>لوحات وأوراق</p></div></div>
 
-        <div class="graphic-item gralb" data-tilt><img src="assets/images/post9.png" alt=""><div class="graphic-overlay"><h3>تصميم قالب اعلاني للصور والفيديوهات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item gralb" data-tilt><img src="assets/images/post8.jpg" alt=""><div class="graphic-overlay"><h3>تصميم قالب اعلاني للصور والفيديوهات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item gralb" data-tilt><img src="assets/images/post10.png" alt=""><div class="graphic-overlay"><h3>تصميم قالب اعلاني للصور والفيديوهات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item gralb" data-tilt><img src="assets/images/post13.jpg" alt=""><div class="graphic-overlay"><h3>تصميم قالب اعلاني للصور والفيديوهات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item gralb" data-tilt><img src="assets/images/post14.jpg" alt=""><div class="graphic-overlay"><h3>تصميم قالب اعلاني للصور والفيديوهات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item gralb" data-tilt><img src="assets/images/post15.jpg" alt=""><div class="graphic-overlay"><h3>تصميم قالب اعلاني للصور والفيديوهات</h3><p>تلاعب بالصور - فوتوشوب</p></div></div>
-        <div class="graphic-item gralb" data-tilt>
-        <img src="assets/images/post16.jpg" alt="">
-        <div class="graphic-overlay">
-        <h3>تصميم قالب اعلاني للصور والفيديوهات</h3>
-        <p>تلاعب بالصور - فوتوشوب</p>
-        </div></div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post36.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post37.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post38.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post39.jpg" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-        <div class="graphic-item social" data-tilt>
-             <img src="assets/images/post40.png" alt="">
-            <div class="graphic-overlay"><h3>تصميم اعلان  سوشيال ميديا </h3>
-            <p> فوتوشوب</p>
-            </div>
-        </div>
-
-
-        <div class="graphic-item branding" data-tilt><img src="assets/images/brand1.jpg" alt=""><div class="graphic-overlay"><h3>هوية بصرية كاملة</h3><p>أظرف، كروت، أوراق</p></div></div>
-        <div class="graphic-item branding" data-tilt><img src="assets/images/brand2.jpg" alt=""><div class="graphic-overlay"><h3>هوية بصرية كاملة</h3><p>عباره عن لوحة تجاريه</p></div></div>
-        <div class="graphic-item branding" data-tilt><img src="assets/images/brand3.jpg" alt=""><div class="graphic-overlay"><h3>هوية بصرية كاملة</h3><p>عباره عن لوحة تجاريه</p></div></div>
-        <div class="graphic-item branding" data-tilt><img src="assets/images/brand2.png" alt=""><div class="graphic-overlay"><h3>هوية بصرية كاملة</h3><p>أظرف، كروت، أوراق</p></div></div>
-        <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand3.png" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق</p>
-            </div>
-        </div>
-        <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand4.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق</p>
-            </div>
-        </div>
-        <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand5.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق</p>
-            </div>
-        </div>
-        <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand6.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق،لوحات</p>
-            </div>
-        </div>
-         <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand7.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق،لوحات</p>
-            </div>
-        </div>
-         <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand8.jpg" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق،لوحات</p>
-            </div>
-        </div>
-         <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand9.png" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق،لوحات</p>
-            </div>
-        </div>
-         <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand10.png" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق،لوحات</p>
-            </div>
-        </div>
-      
-         <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand12.png" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق،لوحات</p>
-            </div>
-        </div>
-         <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand13.png" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق،لوحات</p>
-            </div>
-        </div>
-         <div class="graphic-item branding" data-tilt>
-            <img src="assets/images/brand4.png" alt="">
-            <div class="graphic-overlay">
-            <h3>هوية بصرية كاملة</h3>
-            <p>أظرف، كروت، أوراق،لوحات</p>
-            </div>
-        </div>
-
-
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani1.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة بمناسة الجمعة</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani3.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة بمناسة الجمعة</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani4.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة بمناسة الجمعة</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani2.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة بمناسة الجمعة</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani5.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة بمناسة الجمعة</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani8.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة بمناسة الجمعة</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani6.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة بمناسة الجمعة</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani7.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة بمناسة الجمعة</h3><p>فوتوشوب</p></div></div>
-
-        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani9.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani10.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani11.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        
-        <div class="graphic-item social tall" data-tilt><img src="assets/images/tahani12.png" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani13.png" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani14.png" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social tall" data-tilt><img src="assets/images/tahani15.png" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani20.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social tall" data-tilt><img src="assets/images/tahani21.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani16.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani17.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة مولود</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani18.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة مولود</h3><p>فوتوشوب</p></div></div>
-        <div class="graphic-item social" data-tilt><img src="assets/images/tahani19.jpg" alt=""><div class="graphic-overlay"><h3>تهنئة مولود</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani1.jpg" loading="lazy"><div class="graphic-overlay"><h3>جمعة مباركة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani3.jpg" loading="lazy"><div class="graphic-overlay"><h3>جمعة مباركة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani4.jpg" loading="lazy"><div class="graphic-overlay"><h3>جمعة مباركة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani2.jpg" loading="lazy"><div class="graphic-overlay"><h3>جمعة مباركة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani5.jpg" loading="lazy"><div class="graphic-overlay"><h3>جمعة مباركة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani8.jpg" loading="lazy"><div class="graphic-overlay"><h3>جمعة مباركة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani6.jpg" loading="lazy"><div class="graphic-overlay"><h3>جمعة مباركة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani7.jpg" loading="lazy"><div class="graphic-overlay"><h3>جمعة مباركة</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani9.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani10.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani11.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social tall" data-tilt><img src="assets/images/tahani12.png" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani13.png" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani14.png" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social tall" data-tilt><img src="assets/images/tahani15.png" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani20.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social tall" data-tilt><img src="assets/images/tahani21.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani16.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة زفاف</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani17.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة مولود</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social wide" data-tilt><img src="assets/images/tahani18.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة مولود</h3><p>فوتوشوب</p></div></div>
+        <div class="graphic-item social" data-tilt><img src="assets/images/tahani19.jpg" loading="lazy"><div class="graphic-overlay"><h3>تهنئة مولود</h3><p>فوتوشوب</p></div></div>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="js/main.js"></script>
+
     <script>
+        // تفعيل الـ Tilt لجميع العناصر
         VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
 
+        // أنيميشن الدخول عند تحميل الصفحة
         window.addEventListener('load', () => {
-            gsap.to(".graphic-item", { duration: 1.2, opacity: 1, y: 0, stagger: 0.05, ease: "expo.out" });
+            gsap.to(".graphic-item", { duration: 1.2, opacity: 1, y: 0, stagger: 0.03, ease: "expo.out" });
         });
 
+        // نظام الفلترة
         const btns = document.querySelectorAll('.filter-btn');
         const cards = document.querySelectorAll('.graphic-item');
 
@@ -531,7 +168,9 @@
                         cards.forEach(card => {
                             card.style.display = (cat === 'all' || card.classList.contains(cat)) ? 'block' : 'none';
                         });
-                        gsap.to(".graphic-item[style*='display: block']", { duration: 0.6, scale: 1, opacity: 1, stagger: 0.05, ease: "back.out(1.5)" });
+                        gsap.to(".graphic-item[style*='display: block']", { 
+                            duration: 0.6, scale: 1, opacity: 1, stagger: 0.05, ease: "back.out(1.5)" 
+                        });
                     }
                 });
             });

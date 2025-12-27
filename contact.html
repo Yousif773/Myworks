@@ -7,111 +7,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            background: #050505;
-            color: white;
-            font-family: 'Tajawal', sans-serif;
-            overflow: hidden;
-        }
-
-        .contact-page {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 80px;
-        }
-
-        .title-section {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .title-section h1 {
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 10px;
-        }
-
-        /* حاوية الأزرار */
-        .links-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            width: 80%;
-            max-width: 900px;
-        }
-
-        /* تصميم البطاقة الذكية */
-        .contact-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            backdrop-filter: blur(15px);
-            opacity: 0; /* للتحريك */
-            transform: translateY(30px);
-        }
-
-        .contact-card i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            transition: 0.3s;
-        }
-
-        .contact-card span {
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-
-        /* ألوان وتأثيرات الهوفر لكل منصة */
-        .whatsapp:hover {
-            border-color: #25D366;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2);
-            transform: scale(1.05);
-        }
-        .whatsapp i { color: #25D366; }
-
-        .facebook:hover {
-            border-color: #1877F2;
-            box-shadow: 0 10px 30px rgba(24, 119, 242, 0.2);
-            transform: scale(1.05);
-        }
-        .facebook i { color: #1877F2; }
-
-        .instagram:hover {
-            border-color: #E4405F;
-            box-shadow: 0 10px 30px rgba(228, 64, 95, 0.2);
-            transform: scale(1.05);
-        }
-        .instagram i { color: #E4405F; }
-
-        .phone:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-            transform: scale(1.05);
-        }
-        .phone i { color: var(--accent-gold); }
-
-        /* تذييل الصفحة */
-        .footer-text {
-            margin-top: 50px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-    </style>
 </head>
-<body>
+<body style="background: #050505; overflow: hidden;">
 
     <nav class="navbar">
         <div class="logo">PRO DESIGNER</div>
@@ -119,13 +16,14 @@
             <li><a href="index.html">الرئيسية</a></li>
             <li><a href="cnc-work.html">أعمال CNC</a></li>
             <li><a href="graphic-work.html">الجرافيك</a></li>
+            <li><a href="about.html">من انا</a></li>
             <li><a href="contact.html" class="active">تواصل معي</a></li>
         </ul>
     </nav>
 
     <div class="contact-page">
-        <div class="title-section">
-            <h1>لنبدأ العمل معاً</h1>
+        <div class="title-section" style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-size: 2.5rem; color: #D4AF37; margin-bottom: 10px;">لنبدأ العمل معاً</h1>
             <p>اختر المنصة المفضلة لديك للتواصل المباشر</p>
         </div>
 
@@ -151,12 +49,12 @@
             </a>
         </div>
 
-        <p class="footer-text">متواجد لخدمتكم على مدار الساعة</p>
+        <p class="footer-text" style="margin-top: 50px; color: #666; font-size: 0.9rem;">متواجد لخدمتكم على مدار الساعة</p>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
-        // حركة دخول البطاقات واحدة تلو الأخرى بشكل احترافي
         gsap.to(".contact-card", {
             opacity: 1,
             y: 0,
@@ -165,11 +63,5 @@
             ease: "back.out(1.7)"
         });
     </script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <script src="js/main.js"></script>
 </body>
 </html>
